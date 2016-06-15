@@ -61,6 +61,10 @@ class Purgely_Settings {
 				'sanitize_callback' => 'sanitize_key',
 				'default'           => PURGELY_DEFAULT_PURGE_TYPE,
 			),
+			'force_purge_all'               => array(
+				'sanitize_callback' => 'purgely_sanitize_checkbox',
+				'default'           => PURGELY_FORCE_PURGE_ALL,
+			),
 		);
 	}
 

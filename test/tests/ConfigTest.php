@@ -12,5 +12,6 @@ class ConfigTest extends PurgelyBase {
 		$this->assertTrue( defined( 'PURGELY_STALE_IF_ERROR_TTL' ) );
 		$this->assertTrue( defined( 'PURGELY_SURROGATE_CONTROL_TTL' ) );
 		$this->assertTrue( defined( 'PURGELY_DEFAULT_PURGE_TYPE' ) );
+		$this->assertTrue( defined( 'PURGELY_FORCE_PURGE_ALL' ) );
 	}
 }

@@ -176,6 +176,14 @@ class Purgely_Settings_Page {
 			'purgely-settings',
 			'purgely-stale_settings'
 		);
+
+		add_settings_field(
+			'force_purge_all',
+			__( 'Force All Cache Purges', 'purgely' ),
+			array( $this, 'stale_if_error_ttl_render' ),
+			'purgely-settings',
+			'purgely-general_settings'
+		);
 	}
 
 	/**
@@ -438,6 +446,24 @@ class Purgely_Settings_Page {
 		<input type='text' name='purgely-settings[stale_if_error_ttl]' value='<?php echo esc_attr( $options['stale_if_error_ttl'] ); ?>'>
 		<p class="description">
 			<?php esc_html_e( 'This setting determines the amount of time that stale content will be served while the origin is returning an error state.', 'purgely' ); ?>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Render the setting input.
+	 *
+	 * @since 1.0.1.
+	 *
+	 * @return void
+	 */
+	public function force_purge_all_render() {
+		$options = Purgely_Settings::get_settings();
+		?>
+		<input type='radio' name='purgely-settings[force_purge_all]' <?php checked( isset( $options['force_purge_all'] ) && true === $options['force_purge_all'] ); ?> value='true'>Yes&nbsp;
+		<input type='radio' name='purgely-settings[force_purge_all]' <?php checked( isset( $options['force_purge_all'] ) && false === $options['force_purge_all'] ); ?> value='false'>No
+		<p class="description">
+			<?php esc_html_e( 'Force purging entire site whenever a post is updated. The full cache purging behavior available to WP CLI must be explicitly enabled in order for it to work. Purging the entire cache can cause significant site stability issues and is disable by default.', 'purgely' ); ?>
 		</p>
 		<?php
 	}

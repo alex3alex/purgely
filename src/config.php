@@ -90,3 +90,12 @@ if ( ! defined( 'PURGELY_SURROGATE_CONTROL_TTL' ) ) {
 if ( ! defined( 'PURGELY_DEFAULT_PURGE_TYPE' ) ) {
 	define( 'PURGELY_DEFAULT_PURGE_TYPE', 'soft' );
 }
+
+/**
+ * Force all-cache purges when updating posts.
+ *
+ * @since 1.0.1.
+ */
+if ( ! defined( 'PURGELY_FORCE_PURGE_ALL' ) ) {
+	define( 'PURGELY_FORCE_PURGE_ALL', false );
+}

@@ -46,6 +46,11 @@ class Purgely_Purges {
 			return;
 		}
 
+		if ( true === Purgely_Settings::get_setting( 'force_purge_all' ) ) {
+			purgely_purge_all();
+			return;
+		}
+
 		purgely_purge_surrogate_key( 'post-' . absint( $post_id ) );
 	}
 
