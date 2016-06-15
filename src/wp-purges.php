@@ -46,7 +46,18 @@ class Purgely_Purges {
 			return;
 		}
 
-		purgely_purge_surrogate_key( 'post-' . absint( $post_id ) );
+		$ids[] = ( 'post-' . absint( $post_id ) );
+
+		$parent_id = wp_is_post_revision( $post_id );
+		if ( defined ( $parent_id) ) {
+			$ids[] = 'post-' . absint( $parent_id );
+		} else {
+			$ids[] = 'template-home';
+		}
+
+		foreach ( $ids as $id ) {
+			purgely_purge_surrogate_key( $id );
+		}
 	}
 
 	/**
