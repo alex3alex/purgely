@@ -46,7 +46,11 @@ class Purgely_Purges {
 			return;
 		}
 
-		purgely_purge_surrogate_key( 'post-' . absint( $post_id ) );
+		if ( isset( Purgely_Settings::get_setting( 'fastly_service_id') ) ) {
+			purgely_purge_surrogate_key( 'post-' . absint( $post_id ) );
+		} else {
+			purgely_purge_url( get_permalink( $post_id ) );
+		}
 	}
 
 	/**
